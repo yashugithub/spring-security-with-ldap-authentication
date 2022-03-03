@@ -48,52 +48,57 @@ Before creating LDIF file, draw DIT for people structure
  
 With the above information let’s start creating the LDIF file with objectClasses and attributeName
 
-> // DEFINE DIT ROOT/BASE/SUFFIX 
-// uses RFC 2377 format
-// replace example and com as necessary below
-// or for experimentation leave as is
-// dcObject is an AUXILLIARY objectclass and MUST
-// have a STRUCTURAL objectclass (organization in this case)
-// this is an ENTRY sequence and is preceded by a BLANK line
-dn: dc=ABC,dc=net
-dc: ABC
-description: ABC employee list
-objectClass: dcObject
-objectClass: organization
-o: ABC, net.
-// FIRST Level hierarchy - people 
-dn: ou=people, dc=ABC,dc=net
-ou: people
-description: All people in ABC organisation
-objectclass: organizationalunit
-// SECOND Level hierarchy
-//  ADD a single entry under FIRST (people) level
-dn: ou=permanent, ou=people, dc=ABC,dc=net
-ou: permanent
-description: All people in ABC organisation
-objectclass: organizationalunit
-dn: ou=contractor, ou=people, dc=ABC,dc=net
-ou: contractor
-description: All people in ABC organisation
-objectclass: organizationalunit
-dn: ou=consultant, ou=people, dc=ABC,dc=net
-ou: consultant
-description: All people in ABC organisation
-objectclass: organizationalunit
-//  Data entry Level hierarchy
-//  ADD a single entry under Second level
-dn: cn=Joe,ou=contractor,ou=people,dc=ABC,dc=net
-objectclass: inetOrgPerson
-cn: Joe
-cn: Joe L
-sn: L
-uid: joel
-userpassword: joepwd
-homephone: 555-111-2222
-mail: joe123@example.com
-mail: joel@example.com
-description: Joe is a developer
-ou: contractor
+    // DEFINE DIT ROOT/BASE/SUFFIX 
+    // uses RFC 2377 format
+    // replace example and com as necessary below
+    // or for experimentation leave as is
+    // dcObject is an AUXILLIARY objectclass and MUST
+    // have a STRUCTURAL objectclass (organization in this case)
+    
+    // this is an ENTRY sequence and is preceded by a BLANK line
+
+    dn: dc=ABC,dc=net
+    dc: ABC
+    description: ABC employee list
+    objectClass: dcObject
+    objectClass: organization
+    o: ABC, net.
+
+    // FIRST Level hierarchy - people 
+    dn: ou=people, dc=ABC,dc=net
+    ou: people
+    description: All people in ABC organisation
+    objectclass: organizationalunit
+
+    // SECOND Level hierarchy
+    //  ADD a single entry under FIRST (people) level
+    dn: ou=permanent, ou=people, dc=ABC,dc=net
+    ou: permanent
+    description: All people in ABC organisation
+    objectclass: organizationalunit
+    dn: ou=contractor, ou=people, dc=ABC,dc=net
+    ou: contractor
+    description: All people in ABC organisation
+    objectclass: organizationalunit
+    dn: ou=consultant, ou=people, dc=ABC,dc=net
+    ou: consultant
+    description: All people in ABC organisation
+    objectclass: organizationalunit
+
+    //  Data entry Level hierarchy
+    //  ADD a single entry under Second level
+    dn: cn=Joe,ou=contractor,ou=people,dc=ABC,dc=net
+    objectclass: inetOrgPerson
+    cn: Joe
+    cn: Joe L
+    sn: L
+    uid: joel
+    userpassword: joepwd
+    homephone: 555-111-2222
+    mail: joe123@example.com
+    mail: joel@example.com
+    description: Joe is a developer
+    ou: contractor
 
 
 
